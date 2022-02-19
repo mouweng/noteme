@@ -2,7 +2,7 @@
 
 # NOTEME <small>0.0.1</small>
 
-> Get super special offer by noteme everyday!
+> 我一直脚踏实地，然后继续前进
 
 
 [Github](https://github.com/mouweng/noteme)
