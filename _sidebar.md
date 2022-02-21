@@ -4,3 +4,6 @@
 * [📟Leetcode](leetcode/)
     * [常用模板](leetcode/常用模板)
 
+- [🔖Language](language/)
+    - [Go基础篇](language/Go基础篇)
+
