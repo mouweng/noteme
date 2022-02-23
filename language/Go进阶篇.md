@@ -26,3 +26,63 @@
 
 ## Go闭包底层原理
 
+```go
+package main
+
+import "fmt"
+
+func adder() func(int) int {
+    sum := 0
+    return func(x int) int {
+        sum += x
+        return sum
+    }
+}
+
+func main() {
+     valueFunc:= adder()
+     fmt.Println(valueFunc(2))     // output: 2
+     fmt.Println(valueFunc(2))   // output: 4
+}
+```
+
+1. **闭包函数里引用的外部变量，是在堆还是栈内存申请的**，取决于，你这个闭包函数在函数 Return 后是否还会在其他地方使用，若会， 就会在堆上申请，若不会，就在栈上申请。
+2. 闭包函数里，引用的外部变量，存储的并不是对值的拷贝，存的是值的指针。
+3. 函数的返回值里若写了变量名，则该变量是在上级的栈内存里申请的，return 的值，会直接赋值给该变量。
+
+## defer的变量快照什么情况会失效
+
+```go
+func func1() {
+    age := 0
+    defer fmt.Println(age) // output: 0
+
+    age = 18
+    fmt.Println(age)      // output: 18
+}
+
+
+func main() {
+    func1()
+}
+```
+
+```go
+func func1() {
+    age := 0
+    defer func() {
+        fmt.Println(age) // output: 18
+    }()
+    age = 18
+    return
+}
+
+func main() {
+    func1()
+}
+```
+
+- 若 defer 后接的是单行表达式，那defer 中的 age 只是拷贝了 `func1` 函数栈中 defer 之前的 age 的值；
+- 
+    若 defer 后接的是闭包函数，那defer 中的 age 只是存储的是 `func1` 函数栈中 age 的指针。
+

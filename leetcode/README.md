@@ -1,3 +1,6 @@
 # leetcode
 
-leetcode笔记
+- [ ] 二分法
+- [ ] 背包问题
+- [ ] KMP
+
