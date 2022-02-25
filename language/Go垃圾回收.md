@@ -2,6 +2,8 @@
 
 [Golang中GC回收机制三色标记与混合写屏障](https://www.bilibili.com/video/BV1wz4y1y7Kd)
 
+[[典藏版]Golang三色标记、混合写屏障GC模式图文全分析](https://www.jianshu.com/p/4c5a303af470)
+
 ## Go V1.3之前 标记-清除算法
 
 ### 主要步骤
@@ -38,3 +40,8 @@ Go V1.3 做了简单的优化,将STW提前, 减少STW暂停的时间范围.如�
 - 清除数据会产生heap碎片
 
 Go是如何面对并这个问题的呢？接下来G V1.5版本 就用**三色并发标记法**来优化这个问题.
+
+## GoV1.5 三色标记法
+
+
+

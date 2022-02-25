@@ -517,3 +517,79 @@ func main() {
 }
 ```
 
+## 异常机制：panic和recover
+
+### 触发panic
+
+手动触发宕机，是非常简单的一件事，只需要调用 panic 这个内置函数即可，就像这样子。
+
+```go
+package main
+
+func main() {
+    panic("crash")
+}
+```
+
+运行后，直接报错宕机:
+
+```go
+$ go run main.go
+go run main.go
+panic: crash
+
+goroutine 1 [running]:
+main.main()
+        E:/Go-Code/main.go:4 +0x40
+exit status 2
+```
+
+### 捕获 panic
+
+`recover`可以让程序在发生宕机后起死回生。
+
+但是 recover 的使用，有一个条件，就是它必须在 defer 函数中才能生效，其他作用域下，它是不工作的。
+
+```go
+import "fmt"
+
+func set_data(x int) {
+    defer func() {
+        // recover() 可以将捕获到的panic信息打印
+        if err := recover(); err != nil {
+            fmt.Println(err)
+        }
+    }()
+
+    // 故意制造数组越界，触发 panic
+    var arr [10]int
+    arr[x] = 88
+}
+
+func main() {
+    set_data(20)
+
+    // 如果能执行到这句，说明panic被捕获了
+    // 后续的程序能继续运行
+    fmt.Println("everything is ok")
+}
+```
+
+运行后，输出如下:
+
+```go
+$ go run main.go
+runtime error: index out of range [20] with length 10
+everything is ok
+```
+
+通常来说，不应该对进入 panic 宕机的程序做任何处理，但有时，需要我们可以从宕机中恢复，至少我们可以在程序崩溃前，做一些操作，举个例子，当 web 服务器遇到不可预料的严重问题时，在崩溃前应该将所有的连接关闭，如果不做任何处理，会使得客户端一直处于等待状态，如果 web 服务器还在开发阶段，服务器甚至可以将异常信息反馈到客户端，帮助调试。
+
+### 总结一下
+
+Golang 异常的抛出与捕获，依赖两个内置函数：
+
+- panic：抛出异常，使程序崩溃
+- recover：捕获异常，恢复程序或做收尾工作
+
+revocer 调用后，抛出的 panic 将会在此处终结，不会再外抛，但是 recover，并不能任意使用，它有强制要求，必须得在 defer 下才能发挥用途。
