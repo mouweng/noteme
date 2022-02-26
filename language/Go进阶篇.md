@@ -1,5 +1,7 @@
 # Go语言进阶篇
 
+[Go语言面试宝典-进阶篇&原理篇](https://go-interview.iswbm.com/index.html)
+
 ## goroutine存在的意义
 
 线程其实分两种：
@@ -137,5 +139,170 @@ func main() {
 
 在代码中直接调用 runtime.Gosched 方法，也可以手动触发。
 
+## Go 里是怎么比较相等与否
 
+### 1.两个 interface 比较
 
+#### interface 内部结构
+
+interface 的内部实现包含了两个字段，一个是 type，一个是 data
+
+![interface](https://cdn.jsdelivr.net/gh/mouweng/FigureBed/img/20220226153735.png)
+
+#### 情况1：type 和 data 都相等
+
+- 在下面的代码中，p1 和 p2 的 type 都是 Profile，data 都是 `{"iswbm"}`，因此 p1 与 p2 相等。
+
+- 而 p3 和 p3 虽然类型都是 `*Profile`，但由于 data 存储的是结构体的地址，而两个地址和不相同，因此 p3 与 p4 不相等。
+
+```go
+package main
+
+import "fmt"
+
+type Profile struct {
+    Name string
+}
+
+type ProfileInt interface {}
+
+func main()  {
+    var p1, p2 ProfileInt = Profile{"iswbm"}, Profile{"iswbm"}
+    var p3, p4 ProfileInt = &Profile{"iswbm"}, &Profile{"iswbm"}
+
+    fmt.Printf("p1 --> type: %T, data: %v \n", p1, p1)
+    fmt.Printf("p2 --> type: %T, data: %v \n", p2, p2)
+    fmt.Println(p1 == p2)  // true
+
+    fmt.Printf("p3 --> type: %T, data: %p \n", p3, p3)
+    fmt.Printf("p4 --> type: %T, data: %p \n", p4, p4)
+    fmt.Println(p3 == p4)  // false
+}
+```
+
+运行后，输出如下
+
+```shell
+p1 --> type: main.Profile, data: {iswbm}
+p2 --> type: main.Profile, data: {iswbm}
+true
+p3 --> type: *main.Profile, data: 0xc00008e200
+p4 --> type: *main.Profile, data: 0xc00008e210
+false
+```
+
+#### 情况2：两个 interface 都是 nil
+
+当一个 interface 的 type 和 data 都处于 unset 状态的时候，那么该 interface 的值就为 nil。
+
+```go
+package main
+
+import "fmt"
+
+type ProfileInt interface {}
+
+func main()  {
+    var p1, p2 ProfileInt
+    fmt.Println(p1==p2) // true
+}
+```
+
+### 2. interface 与 非 interface 比较
+
+当 interface 与非 interface 比较时，会将 非interface 转换成 interface ，然后再按照 **两个 interface 比较** 的规则进行比较。
+
+```go
+package main
+
+import (
+    "fmt"
+    "reflect"
+)
+
+func main()  {
+    var a string = "iswbm"
+    var b interface{} = "iswbm"
+    fmt.Println(a==b) // true
+}
+```
+
+上面这种例子可能还好理解，那么请你看下面这个例子，为什么经过反射看到的他们不相等？
+
+```go
+package main
+
+import (
+    "fmt"
+    "reflect"
+)
+
+func main()  {
+    var a *string = nil
+    var b interface{} = a
+
+    fmt.Println(b==nil) // false
+}
+```
+
+因此当 nil 转换为interface 后是 `(type=nil, data=nil)` ，这与 b `(type=*string, data=nil)` 虽然 data 是一样的，但 type 不相等，因此他们并不相等。
+
+##  数组比切片的优势
+
+###  数组可以编译检查越界
+
+由于数组在声明后，长度就是固定的，因此在编译的时候编译器可以检查在索引取值的时候，是否有越界。而切片的长度只有运行时才能知晓，编译器无法检查。
+
+```go
+func main() {
+    array := [2]int{}
+    array[2] = 2  //invalid array index 2 (out of bounds for 2-element array)
+}
+```
+
+### 长度是类型的一部分
+
+在声明一个数组的类型时，需要指明两点：元素的类型和元素的个数。
+
+```go
+var array [2]int
+```
+
+因此长度是数组类型的一部分，两个元素类型相同，但可包含的元素个数不同的数组，属于两个类型。
+
+```go
+func main() {
+    var array1 [2]int
+    var array2 [2]int
+    var array3 [3]int
+    fmt.Println(reflect.TypeOf(array1) == reflect.TypeOf(array2)) // true
+    fmt.Println(reflect.TypeOf(array1) == reflect.TypeOf(array3)) // false
+}
+```
+
+基于这个特点，可以用它来达到一些合法性校验的目的，例如 IPv4 的地址可以声明为 [4]byte，符合该类型的数组就是合法的 ip，反之则不合法。
+
+### 数组可以比较
+
+类型相同的两个数组可以进行比较
+
+```go
+func main() {
+    array1 := [2]int{1,2}
+    array2 := [2]int{1,2}
+    array3 := [2]int{2,1}
+    fmt.Println(array1 == array2) // true
+    fmt.Println(array1 == array3) // false
+}
+```
+
+类型不同（长度不同）的数组 和 切片均不行。可比较这一特性，决定了数组也可以用来当 map 的 key 使用。
+
+```go
+func main() {
+    array1 := [2]int{1,2}
+    dict := make(map[[2]int]string)
+    dict[array1] = "hello"
+    fmt.Println(dict) // map[[1 2]:hello]
+}
+```
