@@ -7,3 +7,5 @@
 
 [Github](https://github.com/mouweng/noteme)
 [Getting Start](https://mouweng.github.io/noteme/#/)
+
+![color](#f0f0f0)
