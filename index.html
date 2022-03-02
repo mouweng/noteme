@@ -11,9 +11,6 @@
   <div id="app"></div>
   <script>
     window.$docsify = {
-        // 入口文件改为 /home.md
-      homepage: '_sidebar.md',
-
       name: 'NOTEME',
       // repo: ''
 
@@ -33,8 +30,12 @@
         color:'rgb(90,90,90)',
         language:'chinese'
       },
-      
-      search: 'auto' // 默认值
+
+      // 入口文件改为 /home.md
+      homepage: '_sidebar.md',
+
+      // 找不到主页时候
+      notFoundPage: true,
 
     }
   </script>
@@ -43,10 +44,9 @@
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-go.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-gcc.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-js.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
