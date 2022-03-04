@@ -6,6 +6,6 @@
 
 
 [Github](https://github.com/mouweng/noteme)
-[Getting Start](https://mouweng.github.io/noteme/#/)
+[Getting Start](http://wengyifan.wiki)
 
 ![color](#f0f0f0)
