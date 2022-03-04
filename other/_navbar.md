@@ -1,4 +1,4 @@
 - 👨🏻‍💻About
-    - [👨🏻‍💻关于我](other/About)
+    - [👨🏻‍💻关于我](other/about)
 - 📟Github
     - [📟Github](https://github.com/mouweng/noteme)
