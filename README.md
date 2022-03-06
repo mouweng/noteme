@@ -1,8 +1,9 @@
 <!-- docs/_sidebar.md -->
 
-- [💾Databases](databases/)
+- [💾Database](database/)
     - [窗口函数的妙用](database/窗口函数)
-
+    - [关系型数据库](database/关系型数据库)
+    
 - [🔋Leetcode](leetcode/)
     - [常用模板](leetcode/常用模板)
     - [语法要点](leetcode/语法要点)
