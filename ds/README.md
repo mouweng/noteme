@@ -1,2 +1,2 @@
-- [🧲Data Structure](ds/)
+- [🧲 Data Structure](ds/)
     - [堆](ds/堆)

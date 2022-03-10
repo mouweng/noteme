@@ -1,4 +1,4 @@
-- [🔖Language](language/)
+- [🔖 Language](language/)
     - [Go基础篇](language/Go基础篇)
     - [Go进阶篇](language/Go进阶篇)
     - [深入理解GMP](language/深入理解GMP)
