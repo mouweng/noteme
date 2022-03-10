@@ -4,3 +4,4 @@
     - [深入理解GMP](language/深入理解GMP)
     - [Go垃圾回收](language/Go垃圾回收)
     - [Java基础篇](language/Java基础篇)
+    - [Java集合](language/Java集合)
