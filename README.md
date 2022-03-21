@@ -1,39 +1,23 @@
-<!-- docs/_sidebar.md -->
+# NOTEME
 
-- [💾 Database](database/)
-    - [窗口函数的妙用](database/窗口函数)
-    - [关系型数据库](database/关系型数据库)
-    - [Redis面试总结](database/Redis)
-    
-- [🔋 Leetcode](leetcode/)
-    - [常用模板](leetcode/常用模板)
-    - [语法要点](leetcode/语法要点)
-    - [位运算总结](leetcode/位运算)
-    - [滑动窗口总结](leetcode/滑动窗口总结)
-    
-- [🔖 Language](language/)
-    - [Go基础篇](language/Go基础篇)
-    - [Go进阶篇](language/Go进阶篇)
-    - [深入理解GMP](language/深入理解GMP)
-    - [Go垃圾回收](language/Go垃圾回收)
-    - [Java基础篇](language/Java基础篇)
-    
--  [📟 OS](os/)
-    - [进程与线程](os/进程与线程)
-    - [进程通信](os/进程通信)
-    - [Linux多进程与多线程](os/Linux多进程与多线程)
-    - [内存管理](os/内存管理)
-    - [I/O多路复用](os/IO多路复用)
-    
-- [🌐 Network](network/)
-    - [HTTP](network/HTTP)
-    - [计算机网络](network/计算机网络)
+> 📟 Noteme是一个笔记docs
+> - 🔁 项目维护 [Github](https://github.com/mouweng/noteme)
+> - 📖 项目文档 [Github Pages](http://wengyifan.wiki/)
 
-- [🧲 Data Structure](ds/)
-    - [堆](ds/堆)
+## Todo List
+- [ ] [linux IO复用](https://www.bilibili.com/video/BV1jK4y1N7ST?spm_id_from=333.999.0.0)
+- [ ] [海量数据处理总结](https://blog.csdn.net/v_JULY_v/article/details/6279498)
+- [ ] [HashMap常见问题](https://mp.weixin.qq.com/s/sv94zXCl7MU54VBQx8WQJw)
+- [ ] redis集群三种模式总结
 
-- [🖥 System](system/)
-    - [海量数据处理](system/海量数据处理)
+## Contribution
 
-- [⚙️ Tools](tools/)
-    - [anaconda环境搭建](tools/conda)
+##### welcome to give issues and pull requests 😆
+
+## Thanks
+Powered by [docsify](https://docsify.js.org/#/)
+
+## END
+
+##### If you like noteme, please give it a star✨
+
