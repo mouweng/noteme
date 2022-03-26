@@ -37,4 +37,4 @@
 
 - [⚙️ Tools](tools/)
     - [anaconda环境搭建](tools/conda)
-    - [Git合并commit](tool/git合并commit)
+    - [Git合并commit](tools/git合并commit)
