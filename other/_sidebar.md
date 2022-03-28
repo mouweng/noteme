@@ -34,7 +34,8 @@
 
 - [🖥 System](system/)
     - [海量数据处理](system/海量数据处理)
-
+    - [一致性hash算法](system/一致性hash算法)
+    
 - [⚙️ Tools](tools/)
     - [anaconda环境搭建](tools/conda)
     - [Git合并commit](tools/git合并commit)
