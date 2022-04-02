@@ -1,7 +1,9 @@
 - [🔖 Language](language/)
-    - [Go基础篇](language/Go基础篇)
-    - [Go进阶篇](language/Go进阶篇)
-    - [深入理解GMP](language/深入理解GMP)
-    - [Go垃圾回收](language/Go垃圾回收)
-    - [Java基础篇](language/Java基础篇)
-    - [Java集合](language/Java集合)
+    - Go
+        - [Go基础篇](language/go/Go基础篇)
+        - [Go进阶篇](language/go/Go进阶篇)
+        - [深入理解GMP](language/go/深入理解GMP)
+        - [Go垃圾回收](language/go/Go垃圾回收)
+    - Java
+        - [Java基础篇](language/java/Java基础篇)
+        - [HashMap](language/java/HashMap)

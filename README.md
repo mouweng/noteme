@@ -5,9 +5,9 @@
 > - 📖 项目文档 [Github Pages](http://wengyifan.wiki/)
 
 ## Todo List
-- [ ] [linux IO复用](https://www.bilibili.com/video/BV1jK4y1N7ST?spm_id_from=333.999.0.0)
-- [x] [海量数据处理总结](https://blog.csdn.net/v_JULY_v/article/details/6279498)
-- [ ] [HashMap常见问题](https://mp.weixin.qq.com/s/sv94zXCl7MU54VBQx8WQJw)
+[ ] [linux IO复用](https://www.bilibili.com/video/BV1jK4y1N7ST?spm_id_from=333.999.0.0)
+[x] [海量数据处理总结](https://blog.csdn.net/v_JULY_v/article/details/6279498)
+[ ] [HashMap常见问题](https://mp.weixin.qq.com/s/sv94zXCl7MU54VBQx8WQJw)
 - [ ] redis集群三种模式总结
   - [ ] 哨兵模式
   - [ ] 集群模式
