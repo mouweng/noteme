@@ -21,6 +21,9 @@
     - Java
       - [Java基础篇](language/java/Java基础篇)
       - [HashMap](language/java/HashMap)
+      - [Synchronized优化](language/java/Synchronized优化)
+      - [Java内存模型](language/java/Java内存模型)
+      - [volatile原理](language/java/volatile原理)
 -  [📟 OS](os/)
     - [进程与线程](os/进程与线程)
     - [进程通信](os/进程通信)

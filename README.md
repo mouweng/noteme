@@ -8,7 +8,6 @@
 - [ ] [linux IO复用](https://www.bilibili.com/video/BV1jK4y1N7ST?spm_id_from=333.999.0.0)
 - [x] HashMap常见问题
 - [x] 海量数据处理
-
 - [ ] redis集群三种模式总结
   - [ ] 哨兵模式
   - [ ] 集群模式
@@ -27,7 +26,10 @@
 - [x] IP地址的分类
 - [ ] IP层路由协议
 - [ ] CodeTop3-4页
-- [ ] synchronize
+- [x] synchronize
+- [ ] JMM
+- [ ] volitile
+- [ ] JVM虚拟机
 - [ ] 线程池
 
 

@@ -1,5 +1,7 @@
 # MVCC实现原理
 
+- [事务隔离级别和MVCC](https://juejin.cn/book/6844733769996304392/section/6844733770071801870)
+
 > MVCC就是multi-Version Concurrency Controller，也叫多版本并发控制。MVCC的实现原理主要依赖于记录中的三个隐藏字段、Undo-Log和ReadView来实现的！
 
 ## MVCC的组成
