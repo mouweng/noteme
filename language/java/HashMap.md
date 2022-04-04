@@ -1,5 +1,7 @@
 # HashMap
 
+- [HashMap夺命14问，你能坚持到第几问？](https://mp.weixin.qq.com/s/sv94zXCl7MU54VBQx8WQJw)
+
 ## HashMap的特点
 
 - HashMap的数组长度是2的幂次方
@@ -72,8 +74,10 @@ static int hash(int h) {
 
 ## HashMap的put方法流程
 
-画图
+![HashMap put流程](https://cdn.jsdelivr.net/gh/mouweng/FigureBed/img/202204041240878.jpg)
 
-## HashMap的扩容方式
-
-看源码
+1. 首先根据key的值计算hash值，找到该元素在数组中存储的下标
+2. 如果没有哈希冲突直接放在对应的数组下标里
+3. 如果冲突了，且key已经存在，就覆盖掉value
+4. 如果冲突后是链表结构，就判断该链表是否大于8，如果大于8并且数组容量小于64，就进行扩容；如果链表节点数量大于8并且数组的容量大于64，则将这个结构转换成红黑树；否则，链表插入键值对，若key存在，就覆盖掉value
+5. 如果冲突后，发现该节点是红黑树，就将这个节点挂在树上
