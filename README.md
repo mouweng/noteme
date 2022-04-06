@@ -27,9 +27,9 @@
 - [ ] IP层路由协议
 - [ ] CodeTop3-4页
 - [x] synchronize
-- [ ] JMM
-- [ ] volitile
-- [ ] JVM虚拟机
+- [x] JMM
+- [x] volitile
+- [x] JVM虚拟机
 - [ ] 线程池
 
 

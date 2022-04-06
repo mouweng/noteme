@@ -117,7 +117,7 @@ public static void method2() {
 
 ![](https://cdn.jsdelivr.net/gh/mouweng/FigureBed/img/202204042028332.jpg)
 
--  撤销偏向锁需要将锁鲜城升级为轻量级锁。这个过程需要STW。
+-  撤销偏向锁需要将锁升级为轻量级锁。这个过程需要STW。
 - 访问对象的HashCode需要撤销偏向锁
 - 如果对象虽然被多个线程访问，但是没有竞争，这时偏向锁可以被重置。
 - 撤销偏向锁和重偏向都是批量进行的，以类为单位。
