@@ -4,4 +4,5 @@
     - [MVCC实现原理](database/MVCC实现原理)
     - [Redis面试总结](database/Redis)
     - [Redis缓存一致性](database/Redis缓存一致性)
+    - [Redis分布式锁](database/Redis分布式锁)
 
