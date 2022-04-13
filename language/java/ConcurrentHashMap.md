@@ -37,13 +37,17 @@ ConcurrentHashMap当中每个Segment各自持有一把锁。在保证线程安�
 
 ### Put方法
 
-- 为输入的Key做Hash运算，得到hash值。
+1. 为输入的Key做Hash运算，得到hash值。
 
-- 通过hash值，定位到对应的Segment对象
-- 获取可重入锁
-- 再次通过hash值，定位到Segment当中数组的具体位置。
-- 插入或覆盖HashEntry对象。
-- 释放锁。
+2. 通过hash值，定位到对应的Segment对象
+
+3. 获取可重入锁
+
+4. 再次通过hash值，定位到Segment当中数组的具体位置。
+
+5. 插入或覆盖HashEntry对象。
+
+6. 释放锁。
 
 ### size方法
 
