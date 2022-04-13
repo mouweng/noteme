@@ -3,4 +3,5 @@
     - [一致性hash算法](system/一致性hash算法)
     - [雪花算法](system/雪花算法)
     - [策略模式](system/策略模式)
+    - [单例模式](system/单例模式)
 
