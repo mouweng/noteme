@@ -29,6 +29,8 @@
       - [JVM总结](language/java/JVM总结)
       - [自定义线程池](language/java/自定义线程池)
       - [Java线程池](language/java/Java线程池)
+      - [线程创建方式](language/java/线程创建方式)
+      - [线程生命周期及方法](language/java/线程生命周期及方法)
       - [ReentrantLock](language/java/ReentrantLock)
 -  [📟 OS](os/)
     - [进程与线程](os/进程与线程)
