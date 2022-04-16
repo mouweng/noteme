@@ -300,7 +300,7 @@ public class Point {
 
 当把对象放入HashSet时，会首先计算对象的hashCode。如果没有重复的hashCode，那么则默认没有重复元素；如果有hashCode重复，则会调用equals判断HashCode相等的元素是否equals也相等，如果两者相同，HashSet 就不会让加入操作成功
 
-设计规范
+**设计规范**
 
 > 如果equals() 方法被覆盖过，则 hashCode() 方法也必须被覆盖
 
@@ -308,7 +308,7 @@ public class Point {
 - 如果两个对象相等，则 hashcode 一定也是相同的
 - 两个对象有相同的 hashcode 值，它们也不一定是相等的
 
-重写了equals没有重写hashCode，在集合中这两个对象是不会相等的，就会出现问题。
+重写了equals没有重写hashCode，在集合中这两个对象是不会相等的，就会出现问题。比如HashMap中，判断两个对象是否相同，会同时判断equals和hashCode。
 
 ### toString
 
