@@ -114,6 +114,10 @@ Redis 的高可用是通过哨兵来实现（Raft 协议的 Redis 实现）。Se
 
 ![sentinel](https://cdn.jsdelivr.net/gh/mouweng/FigureBed/img/20220310004133.png)
 
+**Sentinel 本质上是一个运行在特殊状模式下的 Redis 服务器**。
+
+Sentinel 模式下 Redis 服务器只支持 `PING`、`SENTINEL`、`INFO`、`SUBSCRIBE`、`UNSUBSCRIBE`、`PSUBSCRIBE`、`PUNSUBSCRIBE` 七个命令。
+
 ## 缓存雪崩、缓存穿透、缓存击穿
 
 ### 缓存雪崩
