@@ -5,3 +5,4 @@
     - [滑动窗口总结](leetcode/滑动窗口总结)
     - [最短路径](leetcode/最短路径)
     - [背包问题](leetcode/背包问题)
+    - [字典树](leetcode/字典树)
