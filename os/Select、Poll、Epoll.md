@@ -1,0 +1,65 @@
+# Select/Poll/Epoll
+
+- [彻底搞懂 Select / Poll / Epoll，就这篇了！](https://developer.51cto.com/article/702199.html)
+- [深入浅出理解select、poll、epoll的实现](https://zhuanlan.zhihu.com/p/367591714)
+
+
+
+## 多路复用
+
+在linux系统中，实际上所有的I/O设备都被抽象为了文件这个概念，一切皆文件，Everything isFile，磁盘、网络数据、终端，甚至进程间通信工具管道pipe等都被当做文件对待。
+
+#### 多路复用
+
+- 多路: 指的是多个socket网络连接;
+- 复用: 指的是复用一个线程；
+- 多路复用主要有三种技术：select，poll，epoll。epoll是最新的, 也是目前最好的多路复用技术；
+
+#### 5种IO模型
+
+```text
+[1]blockingIO - 阻塞IO
+[2]nonblockingIO - 非阻塞IO
+[3]IOmultiplexing - IO多路复用
+[4]signaldrivenIO - 信号驱动IO
+[5]asynchronousIO - 异步IO
+```
+
+>  select/poll/epoll都是IO多路复用机制，可以同时多个描述符，一旦某个描述符就绪（读或写就绪），能够通知程序进行相应读写操作。 
+
+- select，poll，epoll本质上都是**同步I/O**，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的
+- 异步I/O则无需自己负责进行读写，异步I/O的实现会负责把数据从内核拷贝到用户空间。
+
+## select/poll
+
+- 每次调用select，都需要把被监控的fds集合从用户态空间拷贝到内核态空间，高并发场景下这样的拷贝会使得消耗的资源是很大的。
+
+- 没有IO事件发生，则会让出CPU阻塞，当socket事件来了，则会唤醒select线程。select只知道有IO事件来了，但不知道具体是哪个socket有数据，所以要轮循遍历select。
+
+⚠️因为被管理的 socket fd 需要从用户空间拷贝到内核空间，为了控制拷贝的大小而做了限制，即每个 select 能拷贝的 fds 集合大小只有1024。poll 这玩意相比于 select 主要就是优化了 fds 的结构，不再是 bit 数组了，而是一个叫 pollfd 的结构，所以没有1024的限制
+
+![](https://cdn.jsdelivr.net/gh/mouweng/FigureBed/img/202207181120957.gif)
+
+## epoll
+
+> 相比于select，epoll最大的好处在于它不会随着监听fd数目的增长而降低效率。
+
+#### 优化
+
+- 在内核里面就维护了此 epoll 管理的 socket 集合，这样就不用每次调用的时候都得把所有管理的 fds 拷贝到内核了。
+
+- 引入了一个就绪链表（双向链表），callback 里面会把当前就绪的 socket 加入到就绪链表然后唤醒 epoll，epoll就知道是哪个socket有数据来了。
+
+![](https://cdn.jsdelivr.net/gh/mouweng/FigureBed/img/202207181120903.gif)
+
+## 对比
+
+|              | select                                                       | poll                                                         | epoll                                             |
+| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------- |
+| 性能         | 随着连接数的增加，性能急剧下降，处理成千上万的并发连接数时，性能很差 | 随着连接数的增加，性能急剧下降，处理成千上万的并发连接数时，性能很差 | 随着连接数的增加，性能基本没有变化                |
+| 连接数       | 一般1024                                                     | 无限制                                                       | 无限制                                            |
+| 内存拷贝     | 每次调用select拷贝                                           | 每次调用poll拷贝                                             | fd首次调用epoll_ctl拷贝，每次调用epoll_wait不拷贝 |
+| 数据结构     | bitmap                                                       | 数组                                                         | 红黑树                                            |
+| 内在处理机制 | 线性轮询                                                     | 线性轮询                                                     | FD挂在红黑树，通过事件回调callback                |
+| 时间复杂度   | O(n)                                                         | O(n)                                                         | O(1)                                              |
+
