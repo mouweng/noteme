@@ -171,7 +171,7 @@ public class TestThreadPool {
             };
             executor.execute(r);
         }
-        // 种植线程
+        // 终止线程
         executor.shutdown();
         while (!executor.isTerminated()) {}
         System.out.println("Finished all threads");
