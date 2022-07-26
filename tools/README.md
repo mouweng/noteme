@@ -3,4 +3,5 @@
     - [Git合并commit](tool/git合并commit)
     - [RabbitMQ](tools/RabbitMQ)
     - [Quartz](tools/Quartz)
+    - [git revert/reset/rebase](tools/revert&reset&rebase)
 
