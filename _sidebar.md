@@ -28,7 +28,7 @@
     - [ReentrantLock](concurrent/ReentrantLock)
     - [ConcurrentHashMap](concurrent/ConcurrentHashMap)
     - [JUC下面常用工具类](concurrent/JUC下面常用工具类)
-    - [Java内存模型](java/Java内存模型)
+    - [Java内存模型](concurrent/Java内存模型)
     - [线程创建方式](concurrent/线程创建方式)
     - [线程生命周期及方法](concurrent/线程生命周期及方法)
     - [多线程顺序执行的几种写法](concurrent/多线程顺序执行的几种写法)
