@@ -1,1 +1,1 @@
-wengyifan.wiki
+okfine.cc
