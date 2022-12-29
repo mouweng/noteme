@@ -48,3 +48,5 @@ git commit -m "Add big file"
 git push
 ```
 
+## 参考
+- [GitHub's file size limit of 100.00 MB解决办法](https://juejin.cn/post/6844904205476478989)
