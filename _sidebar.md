@@ -72,4 +72,4 @@
     - [git revert/reset/rebase](tools/revert&reset&rebase)
     - [记录一次慢查询](tools/记录一次慢查询)
     - [GitHub大文件上传](tools/GitHub大文件上传)
-
+    - [k8s](tools/k8s)
