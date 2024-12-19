@@ -1,6 +1,8 @@
 <!-- docs/_sidebar.md -->
 - [🔋 Leetcode-go](leetcode-go/)
     - [语法要点](leetcode-go/语法要点)
+    - [二叉树](leetcode-go/二叉树)
+    - [常用模板](leetcode-go/常用模板)
 - [💾 Database](database/)
     - [窗口函数的妙用](database/窗口函数)
     - [关系型数据库](database/关系型数据库)
