@@ -1,3 +1,4 @@
 - [🔋 MatchUs](matchus/)
-    - [匹配算法](matchus/匹配算法)
     - [系统架构](matchus/系统架构)
+    - [匹配算法](matchus/匹配算法)
+    - [二分图匹配](matchus/二分图匹配)
