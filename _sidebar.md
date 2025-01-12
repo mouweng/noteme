@@ -3,6 +3,7 @@
     - [语法要点](leetcode-go/语法要点)
     - [二叉树](leetcode-go/二叉树)
     - [常用模板](leetcode-go/常用模板)
+    - [背题策略](leetcode-go/背题策略)
 - [👫 MatchUs](matchus/)
     - [系统架构](matchus/系统架构)
     - [匹配算法](matchus/匹配算法)
